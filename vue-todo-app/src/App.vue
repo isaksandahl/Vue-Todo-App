@@ -3,7 +3,7 @@
     <div>
       <Header />
     </div>
-    <div class="container">
+    <div class="container m-auto">
       <TodoList />
     </div>
   </div>
@@ -26,5 +26,6 @@ export default class App extends Vue {}
 <style lang="scss">
 body {
   background-color: #242323;
+  font-family: "Roboto Condensed", sans-serif;
 }
 </style>
