@@ -17,7 +17,7 @@
         <ul v-for="(todo, i) in todos" :key="i" class="pb-2 text-orange-600">
           <li class="flex justify-center items-center">
             <p
-              class="flex-1 p-2 cursor-pointer"
+              class="flex-1 p-2 text-xl cursor-pointer"
               :class="{ taskDone: todo.isDone }"
               @click="markAsDone(todo)"
             >
