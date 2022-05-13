@@ -25,6 +25,7 @@ export default class AddTodo extends Vue {
 
   addNewTask() {
     if (this.newTask === "") return;
+    if (this.newTask.trim().length === 0) return;
     else {
       console.log("du lkickade");
       console.log(this.newTask);
