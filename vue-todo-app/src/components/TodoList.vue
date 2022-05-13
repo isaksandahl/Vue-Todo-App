@@ -6,8 +6,8 @@
     <div class="w-4/5 m-auto mt-10 shadow-xl">
       <div class="flex text-white uppercase">
         <p class="flex-1 p-2">Task</p>
-        <p class="p-2">Status</p>
-        <p class="p-2">Edit</p>
+        <p class="p-2 pr-4">Status</p>
+        <p class="py-2">Edit</p>
         <p class="p-2">Delete</p>
       </div>
       <div class="p-2 border border-zinc-500">
@@ -16,7 +16,11 @@
         </div>
         <ul v-for="(todo, i) in todos" :key="i" class="pb-2 text-orange-600">
           <li class="flex justify-center items-center">
-            <p class="flex-1 p-2" @click="markAsDone(todo)">
+            <p
+              class="flex-1 p-2 cursor-pointer"
+              :class="{ taskDone: todo.isDone }"
+              @click="markAsDone(todo)"
+            >
               {{ todo.task }}
             </p>
             <div class="w-24 p-2 text-center">
@@ -87,10 +91,6 @@ export default class TodoList extends Vue {
   todos: Todo[] = [];
 
   todoGetLocalStorage = localStorage.getItem(process.env.VUE_APP_STORAGE_KEY);
-  // todoSetLocalStorage = localStorage.setItem(
-  //   process.env.VUE_APP_STORAGE_KEY,
-  //   JSON.stringify(this.todos)
-  // );
 
   mounted() {
     if (this.todoGetLocalStorage === null) {
@@ -100,44 +100,43 @@ export default class TodoList extends Vue {
     }
   }
 
-  handleAddTask(t: Todo) {
-    this.todos.push(t);
-
+  setLocalStorage() {
     localStorage.setItem(
       process.env.VUE_APP_STORAGE_KEY,
       JSON.stringify(this.todos)
     );
   }
 
+  handleAddTask(t: Todo) {
+    this.todos.push(t);
+
+    this.setLocalStorage();
+  }
+
   handleDeleteTask(i: number) {
     this.todos.splice(i, 1);
-    localStorage.setItem(
-      process.env.VUE_APP_STORAGE_KEY,
-      JSON.stringify(this.todos)
-    );
+    this.setLocalStorage();
   }
 
   markAsDone(t: Todo) {
     if (t.isDone === false) {
       t.isDone = true;
       t.status = "Done";
-      localStorage.setItem(
-        process.env.VUE_APP_STORAGE_KEY,
-        JSON.stringify(this.todos)
-      );
+      this.setLocalStorage();
     } else {
       t.isDone = false;
       t.status = "In progress";
-      localStorage.setItem(
-        process.env.VUE_APP_STORAGE_KEY,
-        JSON.stringify(this.todos)
-      );
+      this.setLocalStorage();
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.taskDone {
+  text-decoration: line-through;
+  opacity: 50%;
+}
 .active {
   color: #22c55e;
 }
