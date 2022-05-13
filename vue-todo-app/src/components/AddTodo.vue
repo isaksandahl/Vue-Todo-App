@@ -3,7 +3,7 @@
     <input
       type="text"
       placeholder="New Task"
-      v-model="newTask"
+      v-model.trim="newTask"
       class="appearance-none rounded-l p-3"
     />
     <button
@@ -25,10 +25,7 @@ export default class AddTodo extends Vue {
 
   addNewTask() {
     if (this.newTask === "") return;
-    if (this.newTask.trim().length === 0) return;
     else {
-      console.log("du lkickade");
-      console.log(this.newTask);
       this.$emit("addTask", new Todo(this.newTask, false));
       this.newTask = "";
     }
