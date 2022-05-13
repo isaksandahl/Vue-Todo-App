@@ -7,7 +7,7 @@
       <div class="flex text-white uppercase">
         <p class="flex-1 p-2">Task</p>
         <p class="p-2 pr-4">Status</p>
-        <!-- <p class="py-2">Edit</p> -->
+        <p class="py-2">Edit</p>
         <p class="p-2">Delete</p>
       </div>
       <div class="p-2 border border-zinc-500">
@@ -28,7 +28,7 @@
                 {{ todo.status }}
               </p>
             </div>
-            <!-- <button
+            <button
               @click="handleEditTask(i)"
               class="flex justify-center h-12 w-12 bg-orange-400 text-white hover:bg-orange-500"
             >
@@ -48,7 +48,7 @@
                   d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
                 />
               </svg>
-            </button> -->
+            </button>
             <button
               @click="handleDeleteTask(i)"
               class="flex justify-center h-12 w-12 bg-red-600 text-white hover:bg-red-700"
