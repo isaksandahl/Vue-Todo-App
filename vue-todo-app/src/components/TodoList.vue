@@ -12,7 +12,7 @@
       </div>
       <div class="p-2 border border-zinc-500">
         <div v-if="!todos.length" class="text-center text-white p-20">
-          Oooh oh! Seems like you are lazy today....
+          Oooh oh! Seems like you are mighty lazy today....
         </div>
         <ul v-for="(todo, i) in todos" :key="i" class="pb-2 text-orange-600">
           <li class="flex justify-center items-center">
